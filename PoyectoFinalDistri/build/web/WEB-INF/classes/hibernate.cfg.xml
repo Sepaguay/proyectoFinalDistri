@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/camiones?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="model/Pedido.hbm.xml"/>
+    <mapping resource="model/Tienda.hbm.xml"/>
+    <mapping resource="model/Producto.hbm.xml"/>
+    <mapping resource="model/Usuario.hbm.xml"/>
+    <mapping resource="model/Camion.hbm.xml"/>
+    <mapping resource="model/Viaje.hbm.xml"/>
+    <mapping resource="model/CompaniaCamion.hbm.xml"/>
+    <mapping resource="model/Almacen.hbm.xml"/>
+    <mapping resource="model/Rol.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

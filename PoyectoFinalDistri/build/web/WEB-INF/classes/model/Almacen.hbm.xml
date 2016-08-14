@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-ago-2016 12:41:27 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Almacen" table="almacen" catalog="camiones">
+        <id name="numeroAlmacen" type="int">
+            <column name="NUMERO_ALMACEN" />
+            <generator class="assigned" />
+        </id>
+        <property name="direccionAlmacen" type="string">
+            <column name="DIRECCION_ALMACEN" length="100" />
+        </property>
+        <property name="telefonoAlmacen" type="java.lang.Long">
+            <column name="TELEFONO_ALMACEN" precision="15" scale="0" />
+        </property>
+        <set name="pedidos" table="pedido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMERO_ALMACEN" not-null="true" />
+            </key>
+            <one-to-many class="model.Pedido" />
+        </set>
+        <set name="tiendas" table="tienda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMERO_ALMACEN" not-null="true" />
+            </key>
+            <one-to-many class="model.Tienda" />
+        </set>
+    </class>
+</hibernate-mapping>

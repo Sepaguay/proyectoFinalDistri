@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-ago-2016 12:41:27 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Rol" table="rol" catalog="camiones">
+        <id name="idRol" type="java.lang.Integer">
+            <column name="id_rol" />
+            <generator class="identity" />
+        </id>
+        <property name="nombreRol" type="string">
+            <column name="nombre_rol" length="30" not-null="true" />
+        </property>
+        <property name="descripcionRol" type="string">
+            <column name="descripcion_rol" length="100" not-null="true" />
+        </property>
+        <property name="estadoRol" type="boolean">
+            <column name="estado_rol" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

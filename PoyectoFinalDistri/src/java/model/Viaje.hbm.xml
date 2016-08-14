@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-ago-2016 12:41:27 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Viaje" table="viaje" catalog="camiones">
+        <id name="numeroViaje" type="int">
+            <column name="NUMERO_VIAJE" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="camion" class="model.Camion" fetch="select">
+            <column name="MATRICULA_CAMION" not-null="true" />
+        </many-to-one>
+        <property name="fechaViaje" type="date">
+            <column name="FECHA_VIAJE" length="10" />
+        </property>
+        <property name="pesotransportadoViaje" type="big_decimal">
+            <column name="PESOTRANSPORTADO_VIAJE" precision="5" />
+        </property>
+        <set name="pedidos" table="pedido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMERO_VIAJE" not-null="true" />
+            </key>
+            <one-to-many class="model.Pedido" />
+        </set>
+    </class>
+</hibernate-mapping>

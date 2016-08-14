@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-ago-2016 12:41:27 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Camion" table="camion" catalog="camiones">
+        <id name="matriculaCamion" type="int">
+            <column name="MATRICULA_CAMION" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="companiaCamion" class="model.CompaniaCamion" fetch="select">
+            <column name="ID_COMPANIA" length="10" not-null="true" />
+        </many-to-one>
+        <property name="limitemaxCamion" type="big_decimal">
+            <column name="LIMITEMAX_CAMION" precision="5" />
+        </property>
+        <property name="numeroEntregaSemCamiones" type="java.lang.Integer">
+            <column name="NUMERO_ENTREGA_SEM_CAMIONES" />
+        </property>
+        <set name="viajes" table="viaje" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MATRICULA_CAMION" not-null="true" />
+            </key>
+            <one-to-many class="model.Viaje" />
+        </set>
+    </class>
+</hibernate-mapping>

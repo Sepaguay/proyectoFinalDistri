@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-ago-2016 12:41:27 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.CompaniaCamion" table="compania_camion" catalog="camiones">
+        <id name="idCompania" type="string">
+            <column name="ID_COMPANIA" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="rucCompania" type="java.lang.Integer">
+            <column name="RUC_COMPANIA" />
+        </property>
+        <property name="direccionCompania" type="string">
+            <column name="DIRECCION_COMPANIA" length="200" />
+        </property>
+        <set name="camions" table="camion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_COMPANIA" length="10" not-null="true" />
+            </key>
+            <one-to-many class="model.Camion" />
+        </set>
+    </class>
+</hibernate-mapping>

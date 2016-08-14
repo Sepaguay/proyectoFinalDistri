@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-ago-2016 12:41:27 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Pedido" table="pedido" catalog="camiones">
+        <id name="numeroPedido" type="int">
+            <column name="NUMERO_PEDIDO" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="viaje" class="model.Viaje" fetch="select">
+            <column name="NUMERO_VIAJE" not-null="true" />
+        </many-to-one>
+        <many-to-one name="almacen" class="model.Almacen" fetch="select">
+            <column name="NUMERO_ALMACEN" not-null="true" />
+        </many-to-one>
+        <many-to-one name="producto" class="model.Producto" fetch="select">
+            <column name="ID_PRODUCTO" length="10" not-null="true" />
+        </many-to-one>
+        <property name="pesoPedido" type="big_decimal">
+            <column name="PESO_PEDIDO" precision="5" />
+        </property>
+        <property name="volumenPedido" type="big_decimal">
+            <column name="VOLUMEN_PEDIDO" precision="5" />
+        </property>
+        <property name="tiendadestinoPedido" type="java.lang.Integer">
+            <column name="TIENDADESTINO_PEDIDO" />
+        </property>
+        <property name="estadoPedido" type="string">
+            <column name="ESTADO_PEDIDO" length="50" />
+        </property>
+        <property name="fechaProPe" type="date">
+            <column name="FECHA_PRO_PE" length="10" />
+        </property>
+        <property name="cantidadProPe" type="java.lang.Integer">
+            <column name="CANTIDAD_PRO_PE" />
+        </property>
+    </class>
+</hibernate-mapping>

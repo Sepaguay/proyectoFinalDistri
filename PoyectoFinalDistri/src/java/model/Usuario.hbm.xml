@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-ago-2016 12:41:27 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Usuario" table="usuario" catalog="camiones">
+        <id name="idUsuario" type="int">
+            <column name="id_usuario" />
+            <generator class="assigned" />
+        </id>
+        <property name="rolId" type="string">
+            <column name="rol_id" length="10" not-null="true" />
+        </property>
+        <property name="usuario" type="string">
+            <column name="usuario" length="25" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="25" not-null="true" />
+        </property>
+        <property name="emailUsuario" type="string">
+            <column name="email_usuario" length="30" not-null="true" />
+        </property>
+        <property name="fechaCreacionUsuario" type="date">
+            <column name="fecha_creacion_usuario" length="10" not-null="true" />
+        </property>
+        <property name="fechaClaveUsuario" type="date">
+            <column name="fecha_clave_usuario" length="10" not-null="true" />
+        </property>
+        <property name="estadoUsuario" type="boolean">
+            <column name="estado_usuario" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

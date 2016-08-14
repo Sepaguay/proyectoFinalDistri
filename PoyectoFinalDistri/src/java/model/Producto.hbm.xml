@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-ago-2016 12:41:27 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="model.Producto" table="producto" catalog="camiones">
+        <id name="idProducto" type="string">
+            <column name="ID_PRODUCTO" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcionProducto" type="string">
+            <column name="DESCRIPCION_PRODUCTO" length="100" />
+        </property>
+        <property name="pesoProducto" type="big_decimal">
+            <column name="PESO_PRODUCTO" precision="3" />
+        </property>
+        <property name="precioProducto" type="big_decimal">
+            <column name="PRECIO_PRODUCTO" precision="4" />
+        </property>
+        <set name="pedidos" table="pedido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PRODUCTO" length="10" not-null="true" />
+            </key>
+            <one-to-many class="model.Pedido" />
+        </set>
+    </class>
+</hibernate-mapping>
